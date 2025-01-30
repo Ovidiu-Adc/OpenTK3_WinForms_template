@@ -18,6 +18,14 @@ namespace OpenTK3_StandardTemplate_WinForms.objects
         public Rectangles()
         {
             coordonates = new ArrayList();
+            /*coordonates.Add(new Coords(-5, 5, 5));   // V1
+            coordonates.Add(new Coords(-5, 5, 25));  // V2
+            coordonates.Add(new Coords(-35, 5, 25)); // V3
+            coordonates.Add(new Coords(-35, 5, 5));  // V4
+            coordonates.Add(new Coords(-5, 40, 5));  // V5
+            coordonates.Add(new Coords(-5, 40, 25)); // V6
+            coordonates.Add(new Coords(-35, 40, 25)); // V7
+            coordonates.Add(new Coords(-35, 40, 5));  // V8*/
             coordonates.Add(new Coords(-5, 5, 5));   // V1
             coordonates.Add(new Coords(-5, 5, 25));  // V2
             coordonates.Add(new Coords(-35, 5, 25)); // V3
@@ -26,6 +34,7 @@ namespace OpenTK3_StandardTemplate_WinForms.objects
             coordonates.Add(new Coords(-5, 40, 25)); // V6
             coordonates.Add(new Coords(-35, 40, 25)); // V7
             coordonates.Add(new Coords(-35, 40, 5));  // V8
+
 
             colors = new ArrayList();
             for (int i = 0; i < 8; i++)
@@ -79,7 +88,7 @@ namespace OpenTK3_StandardTemplate_WinForms.objects
 
         public void Draw()
         {
-            if (!visibility)
+            /*if (!visibility)
             {
                 return;
             }
@@ -101,6 +110,21 @@ namespace OpenTK3_StandardTemplate_WinForms.objects
                     // Culoare din lista pentru curcubeu
                     color = (Color)colors[i];
                 }
+                GL.Color3(color);
+                Coords aux = (Coords)coordonates[i];
+                GL.Vertex3(aux.X, aux.Y, aux.Z);
+            }
+            GL.End();*/
+            if (!visibility)
+            {
+                return;
+            }
+
+            GL.PolygonMode(MaterialFace.FrontAndBack, currentPolygonState);
+            GL.Begin(PrimitiveType.Quads); // Utilizează Quads pentru patrulater
+            for (int i = 0; i < 4; i++) // Asigură-te că bucla merge până la 4
+            {
+                Color color = (Color)colors[i];
                 GL.Color3(color);
                 Coords aux = (Coords)coordonates[i];
                 GL.Vertex3(aux.X, aux.Y, aux.Z);

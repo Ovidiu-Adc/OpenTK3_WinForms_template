@@ -138,10 +138,42 @@ namespace OpenTK3_StandardTemplate_WinForms
 
         private void DrawWireframeCube()
         {
-            GL.Begin(PrimitiveType.LineLoop);
+            /*GL.Begin(PrimitiveType.LineLoop);
             for (int i = 0; i < re.coordonates.Count; i++)
             {
                 GL.Color3((Color)re.colors[i]);
+                Coords aux = (Coords)re.coordonates[i];
+                GL.Vertex3(aux.X, aux.Y, aux.Z);
+            }
+
+            // Desenăm fețele paralelipipedului folosind coordonatele din ArrayList
+            for (int i = 0; i < 4; i++)
+            {
+                Coords coord = (Coords)re.coordonates[i];
+                GL.Vertex3(coord.X, coord.Y, coord.Z);
+            }
+            GL.End();
+
+            GL.Begin(PrimitiveType.LineLoop);
+            for (int i = 4; i < 8; i++)
+            {
+                Coords coord = (Coords)re.coordonates[i];
+                GL.Vertex3(coord.X, coord.Y, coord.Z);
+            }
+            GL.End();
+
+            GL.Begin(PrimitiveType.Lines);
+            // Conectăm vârfurile între cele două fețe
+            for (int i = 0; i < 4; i++)
+            {
+                GL.Vertex3(((Coords)re.coordonates[i]).X, ((Coords)re.coordonates[i]).Y, ((Coords)re.coordonates[i]).Z);
+                GL.Vertex3(((Coords)re.coordonates[i + 4]).X, ((Coords)re.coordonates[i + 4]).Y, ((Coords)re.coordonates[i + 4]).Z);
+            }
+            GL.End();*/
+            GL.Begin(PrimitiveType.LineLoop);
+            for (int i = 0; i < re.coordonates.Count; i++)
+            {
+                GL.Color3((Color)re.colors[i]);  // Potential issue here
                 Coords aux = (Coords)re.coordonates[i];
                 GL.Vertex3(aux.X, aux.Y, aux.Z);
             }
